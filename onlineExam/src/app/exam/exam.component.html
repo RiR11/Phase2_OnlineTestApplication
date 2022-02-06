@@ -1,0 +1,39 @@
+<html>
+<body>
+<header>
+    <img src="/assets/sp_logo.jpg" alt="Succeed Sports" />
+</header>
+<article>
+<div>
+    <h2>Welcome to Online Exam  </h2>
+    <h3>Thank you for applying for the position of sports reprentative in our company.</h3>
+       <h3>Please select all answers and then click submit to view your score.</h3>
+    <form #examRef="ngForm" (ngSubmit)="submitAnswer(examRef)">
+        <div *ngFor="let q of questions;let i=index">
+            <p>{{i+1}} ) {{q.question}}</p>
+            <input type="radio" name={{q.question}} value={{q.ans1}} ngModel required/>{{q.ans1}} 
+            <input type="radio" name={{q.question}} value={{q.ans2}} ngModel required/>{{q.ans2}} 
+            <input type="radio" name={{q.question}} value={{q.ans3}} ngModel required/>{{q.ans3}} 
+            <input type="radio" name={{q.question}} value={{q.ans4}} ngModel required/>{{q.ans4}} 
+        </div>
+        <div id="button">
+            <input type="submit" value="Submit" [disabled]="examRef.invalid"/>
+        </div>
+    </form>
+
+    <h2>{{strCong}}</h2>
+    <h2>Your score is {{correct}}</h2> 
+    <h2>Correct answers are</h2>
+    <div *ngFor ="let c of aryCorrec">
+        <h2> {{c}}</h2> 
+    </div> 
+</div>
+<footer>
+    <address>
+    Succeed Sports &#8226; 42 Ventura Av. &#8226; Los Angeles, CA 
+    78711 &#8226; 512.555.9917
+    </address>
+ </footer>
+</article>
+</body>
+</html>
